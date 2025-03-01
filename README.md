@@ -110,10 +110,10 @@ Bootup AI is committed to the open-source community. We believe in:
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/bootup-ai.git
+git clone https://github.com/manojk0303/bootupai.git
 
 # Navigate to the project directory
-cd bootup-ai
+cd bootupai
 
 # Install dependencies
 npm install
