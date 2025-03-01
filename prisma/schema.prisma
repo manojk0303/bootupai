@@ -1,0 +1,74 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id            String         @id @default(cuid())
+  name          String?
+  email         String?        @unique
+  tempEmail     String?
+  emailVerified DateTime?
+  image         String?
+  password      String?
+  accounts      Account[]
+  referralLinks ReferralLink[]
+}
+
+model ReferralLink {
+  id        String   @id @default(cuid())
+  service   Service  @default(PIPEDREAM)
+  code      String
+  slug      String   @unique
+  url       String
+  creatorId String
+  signups   Int?     @default(0)
+  createdAt DateTime @default(now())
+  creator   User     @relation(fields: [creatorId], references: [id], onDelete: Cascade)
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model VerificationToken {
+  id            String   @id @default(cuid())
+  userId        String
+  token         String   @unique
+  isUpdateEmail Boolean  @default(false)
+  expires       DateTime
+
+  @@unique([userId, token])
+}
+
+model PasswordResetToken {
+  id      String   @id @default(cuid())
+  email   String
+  token   String   @unique
+  expires DateTime
+
+  @@unique([email, token])
+}
+
+enum Service {
+  PIPEDREAM
+}
