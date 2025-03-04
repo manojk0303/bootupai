@@ -44,12 +44,6 @@ export function UserButton() {
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem className='cursor-pointer' asChild>
-            <Link href='/dashboard/create-referral'>Create referral</Link>
-          </DropdownMenuItem>
-          <DropdownMenuItem className='cursor-pointer' asChild>
-            <Link href='/referral'>View Refferals</Link>
-          </DropdownMenuItem>
-          <DropdownMenuItem className='cursor-pointer' asChild>
             <Link href='/update-password'>Update Password</Link>
           </DropdownMenuItem>
         </DropdownMenuGroup>

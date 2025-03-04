@@ -2,8 +2,9 @@
 'use client';
 
 import Link from 'next/link';
-import { Menu, } from 'lucide-react';
+import { Menu } from 'lucide-react';
 import { usePathname } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 import {
   DropdownMenu,
@@ -15,8 +16,17 @@ import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { UserButton } from '@/components/auth/user-button';
 
+interface UserData {
+  id: string;
+  name: string | null;
+  email: string | null;
+  credits: number;
+}
+
 export function Navbar() {
   const pathname = usePathname();
+  const [userData, setUserData] = useState<UserData | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   const navLinks = [
     {
@@ -26,8 +36,30 @@ export function Navbar() {
     {
       href: '/referral',
       label: 'View Referral'
+    },
+    {
+      href: '/bulk-creation',
+      label: 'Bulk Creation'
     }
   ];
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await fetch('/api/user/me');
+        if (response.ok) {
+          const data = await response.json();
+          setUserData(data);
+        }
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchUserData();
+  }, []);
 
   return (
     <nav className='sticky top-0 z-50 w-full border-b bg-white/80 backdrop-blur-md dark:bg-gray-900/80'>
@@ -36,7 +68,7 @@ export function Navbar() {
           href='/dashboard/create-referral' 
           className='flex items-center space-x-2'
         >
-          <img src={"/logo.png"} className='h-8 w-8'/>
+          <img src={"/logo.png"} className='h-8 w-8' alt="Bootup AI Logo"/>
           <span className='hidden text-xl font-bold sm:inline-block'>
             Bootup AI
           </span>
@@ -64,6 +96,10 @@ export function Navbar() {
                   </Link>
                 </DropdownMenuItem>
               ))}
+              {/* Add credits display in mobile menu */}
+              <DropdownMenuItem className="cursor-default opacity-60">
+                {isLoading ? 'Loading credits...' : `Credits: ${userData?.credits || 0}`}
+              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
@@ -87,6 +123,10 @@ export function Navbar() {
         </div>
 
         <div className='ml-auto flex items-center space-x-4'>
+          {/* Credits display for desktop */}
+          <div className="hidden sm:flex items-center justify-center rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary">
+            {isLoading ? 'Loading...' : `${userData?.credits || 0} Credits`}
+          </div>
           <UserButton />
         </div>
       </div>

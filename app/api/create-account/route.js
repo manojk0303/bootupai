@@ -2,6 +2,8 @@
 const { NextResponse } = require('next/server');
 const { db } = require('@/lib/db');
 const { accountQueue } = require('@/lib/queues/account-queue');
+const { checkAndDeductCredits } = require('@/lib/credit-service');
+
 
 async function POST(request) {
   // console.log('Creating account...')
@@ -9,7 +11,7 @@ async function POST(request) {
   try {
     const referralLink = await db.referralLink.findUnique({
       where: { slug },
-      select: { code: true, id: true }
+      select: { code: true, id: true ,creatorId:true}
     })
 
     if (!referralLink) {
@@ -18,6 +20,18 @@ async function POST(request) {
         { status: 404 }
       )
     }
+
+    // Check if user has enough credits and deduct if they do
+    const hasCredits = await checkAndDeductCredits(referralLink.creatorId);
+
+    if (!hasCredits) {
+      return NextResponse.json(
+        { error: "Not enough credits for account creation" },
+        { status: 402 } // 402 Payment Required
+      );
+    }
+
+      
     // console.log("adding queue create")
     const job = await accountQueue.add('create-account', {
       email,
