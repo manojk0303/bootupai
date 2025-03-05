@@ -49,6 +49,6 @@ export async function signUp(values: z.infer<typeof SignUpSchema>) {
   );
 
   return {
-    success: 'Sign up successful. Check your email to verify.'
+    success: 'Sign up successful. Check your email to verify.(It might take a few minutes to arrive  check spam folder if not found)'
   };
 }
