@@ -32,13 +32,13 @@ export default function ContactPage() {
 
         {/* Contact Information */}
         <section className="max-w-6xl w-full py-8 sm:py-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-1 gap-6 sm:gap-8">
             {[
               {
                 icon: <Mail className="h-8 w-8 text-blue-600" />,
                 title: "Email Us",
-                content: "manojk030303@gmail.com",
-                description: "Our support team typically responds within 24 hours."
+                content: "manojkumarcpyk@gmail.com",
+                description: "Our support team typically responds within 8 hours."
               },
             ].map((item, index) => (
               <div key={index} className="flex flex-col items-center text-center p-6 rounded-xl border bg-white shadow-sm hover:shadow-md transition-shadow">
@@ -59,16 +59,16 @@ export default function ContactPage() {
             {
               [
                 {
-                  "question": "How does the referral link system work?",
-                  "answer": "When you log in to our app, you can create a unique referral link for a service you’re promoting. Share this link with your audience, and when they use it to sign up, our system ensures the referral code is applied automatically."
+                  "question": "How long does account creation take?",
+                  "answer": "Account creation is typically processed within 10 hours(in worst case) of submission. "
                 },
                 {
-                  "question": "What happens after someone signs up using my referral link?",
-                  "answer": "Once a user successfully creates their account, our worker system processes their credentials and completes the account creation. They will then receive an email with their login details for the service."
+                  "question": "What happens if account creation fails?",
+                  "answer": "You'll receive a detailed email explaining the failure reason"
                 },
                 {
-                  "question": "Which services are currently supported?",
-                  "answer": "Right now, we support Pipedream for referrals. We plan to integrate Zapier and Make.com in the future to expand referral opportunities."
+                  "question": "Can I request a new service?",
+                  "answer": "Yes! Email us at manojkumarcpyk@gmail.com with your service request."
                 }
               ]
             .map((faq, index) => (

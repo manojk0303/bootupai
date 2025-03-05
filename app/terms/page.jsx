@@ -79,7 +79,7 @@ export default function TermsOfService() {
         
         <h2 className="text-2xl font-semibold mt-8 mb-4">14. Contact Us</h2>
         <p>If you have any questions about these Terms, please contact us at:</p>
-        <p className="mb-8">manojk030303@gmail.com</p>
+        <p className="mb-8">manojkumarcpyk@gmail.com</p>
       </div>
       
       <div className="mt-8">

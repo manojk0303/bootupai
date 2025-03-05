@@ -1,144 +1,168 @@
-// app/pricing/page.tsx
+
+
 "use client";
 
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { Navbar } from '@/components/home-navbar';
 import { Footer } from '@/components/footer';
-import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
-// import Link from "next/link";
 
 export default function PricingPage() {
-  const [credits, setCredits] = useState(100);
-  const [price, setPrice] = useState(0);
-  const [pricePerCredit, setPricePerCredit] = useState(0.0485);
+  const [selectedPlan, setSelectedPlan] = useState<'100' | '500' | '1000'>('100');
+  const [paymentId, setPaymentId] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
   const router = useRouter();
-  
-  useEffect(() => {
-    // Fetch current price per credit from the backend
-    fetch("/api/pricing")
-      .then((res) => res.json())
-      .then((data) => {
-        setPricePerCredit(data.pricePerCredit);
-      });
-      
-    // Check if user is authenticated
-    fetch("/api/user/me")
-      .then((res) => {
-        setIsAuthenticated(res.ok);
-      })
-      .catch(() => {
-        setIsAuthenticated(false);
-      });
-  }, []);
-
-  useEffect(() => {
-    // Calculate price based on credits
-    setPrice(parseFloat((credits * pricePerCredit).toFixed(4)));
-  }, [credits, pricePerCredit]);
-
-  const handlePurchase = async () => {
-    if (!isAuthenticated) {
-      const callbackUrl = encodeURIComponent('/pricing');
-      router.push(`/auth/sign-in?callbackUrl=${callbackUrl}`);
+  const pricingPlans = {
+    '100': { credits: 100, price: 5, nowPaymentsLink: 'https://nowpayments.io/payment/?iid=5808727684' },
+    '500': { credits: 500, price: 20, nowPaymentsLink: 'https://nowpayments.io/payment/?iid=5972252834' },
+    '1000': { credits: 1000, price: 35, nowPaymentsLink: 'https://nowpayments.io/payment/?iid=6251351685' }
+  };  
+  const handlePaymentVerification = async () => {
+    if (!paymentId.trim()) {
+      setError('Please enter a valid Payment ID');
       return;
     }
 
-    // setIsLoading(true);
-    // try {
-    //   const response = await fetch("/api/payments/create", {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify({
-    //       credits,
-    //       amount: price,
-    //     }),
-    //   });
+    setIsLoading(true);
+    setError('');
+    setSuccess('');
 
-    //   const data = await response.json();
-    //   console.log("Payment creation response:", data);
-      
-    //   if (response.ok && data.paymentId) {
-    //     // Redirect to the NOWPayments payment page
-    //     // window.location.href = data.paymentUrl;
-    //   } else {
-    //     console.error("Payment initiation failed:", data.error);
-    //     setIsLoading(false);
-    //   }
-    // } catch (error) {
-    //   console.error("Error creating payment:", error);
-    //   setIsLoading(false);
-    // }
+    try {
+      const response = await fetch('/api/payment-verify', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          paymentId,
+          credits: pricingPlans[selectedPlan].credits,
+          planType: selectedPlan
+        })
+      });
+
+      const result = await response.json();
+
+      if (result.status === 'success') {
+        setSuccess('Payment verification Initiated successfully! Your credits will be updated shortly ');
+      } else {
+        setError(result.message || 'Payment verification failed');
+      }
+    } catch (err) {
+      setError('An error occurred during payment verification');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
     <>
-      <Navbar/>    
-      <div className="max-w-4xl mx-auto py-12 px-4">
-        <h1 className="text-3xl font-bold text-center mb-8">Choose Your Plan</h1>
-        
-        <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-          <div className="px-6 py-8">
-            <h2 className="text-2xl font-semibold text-center mb-8">
-              Pay Only For What You Need
-            </h2>
-            
-            <div className="flex flex-col items-center mb-6">
-              <label className="block text-gray-700 text-sm font-bold mb-2">
-                How many account creations do you need?
-              </label>
-              <div className="flex items-center w-full max-w-md">
-                <button
-                  className="bg-gray-200 px-4 py-2 rounded-l-md"
-                  onClick={() => setCredits(Math.max(10, credits - 10))}
+    <Navbar/>
+
+      <div className="max-w-2xl mx-auto px-4 py-8 mt-8">
+        <div className="bg-white shadow-2xl rounded-2xl overflow-hidden">
+          <div className="p-8">
+            <h1 className="text-3xl font-bold text-center text-gray-800 mb-6">
+              Purchase Credits
+            </h1>
+
+            <div className="grid md:grid-cols-3 gap-4 mb-8">
+              {Object.entries(pricingPlans).map(([key, plan]) => (
+                <div 
+                  key={key} 
+                  className={`border-2 rounded-lg p-5 text-center cursor-pointer transition-all duration-300 
+                    ${selectedPlan === key 
+                      ? 'border-blue-500 bg-blue-50 scale-105' 
+                      : 'border-gray-200 hover:border-blue-300'}`}
+                  onClick={() => setSelectedPlan(key as '100' | '500' | '1000')}
                 >
-                  -
-                </button>
-                <input
-                  type="number"
-                  value={credits}
-                  onChange={(e) => setCredits(Math.max(10, parseInt(e.target.value) || 10))}
-                  className="w-full px-4 py-2 border text-center"
-                  min="10"
+                  <div className="text-xl font-semibold text-gray-800 mb-2">
+                    {plan.credits} Credits
+                  </div>
+                  <div className="text-2xl font-bold text-blue-600">
+                    ${plan.price}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="text-center mb-6">
+              <a 
+                href={pricingPlans[selectedPlan].nowPaymentsLink} 
+                target="_blank" 
+                rel="noreferrer noopener"
+                className="inline-block bg-gradient-to-r from-blue-500 to-blue-600 
+                          text-white px-8 py-3 rounded-full 
+                          hover:from-blue-600 hover:to-blue-700 
+                          transition-all duration-300 
+                          shadow-lg hover:shadow-xl"
+              >
+                Pay via NOWPayments
+              </a>
+            </div>
+
+            <div className="bg-gray-100 rounded-lg p-6">
+              <h3 className="text-lg font-semibold mb-4 text-gray-700">
+                Payment Verification
+              </h3>
+
+              <div className="space-y-4">
+                <select 
+                  value={selectedPlan} 
+                  onChange={(e) => setSelectedPlan(e.target.value as '100' | '500' | '1000')}
+                  className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500"
+                >
+                  <option value="100">100 Credits - $5</option>
+                  <option value="500">500 Credits - $20</option>
+                  <option value="1000">1000 Credits - $35</option>
+                </select>
+                
+                <input 
+                  type="text" 
+                  value={paymentId}
+                  onChange={(e) => setPaymentId(e.target.value)}
+                  placeholder="Enter your payment transaction ID"
+                  className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500"
                 />
-                <button
-                  className="bg-gray-200 px-4 py-2 rounded-r-md"
-                  onClick={() => setCredits(credits + 10)}
+
+                {error && (
+                  <div className="bg-red-50 border border-red-300 text-red-700 px-4 py-3 rounded-lg">
+                    {error}
+                  </div>
+                )}
+
+                {success && (
+                  <div className="bg-green-50 border border-green-300 text-green-700 px-4 py-3 rounded-lg">
+                    {success}
+                  </div>
+                )}
+
+                <button 
+                  onClick={handlePaymentVerification}
+                  disabled={isLoading}
+                  className="w-full bg-gradient-to-r from-green-500 to-green-600 
+                            text-white py-3 rounded-full 
+                            hover:from-green-600 hover:to-green-700 
+                            transition-all duration-300 
+                            shadow-lg hover:shadow-xl
+                            disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  +
+                  {isLoading ? 'Verifying...' : 'Verify Payment'}
                 </button>
               </div>
             </div>
-            
-            <div className="text-center mb-8">
-              <div className="text-4xl font-bold">${price.toFixed(2)}</div>
-              <div className="text-gray-500 mt-1">
-                ${pricePerCredit} per account creation
-              </div>
-            </div>
-            
-            <div className="text-center">
-            <a href="https://nowpayments.io/payment/?iid=4847386002" target="_blank" rel="noreferrer noopener">
-    <img src="https://nowpayments.io/images/embeds/payment-button-white.svg" alt="Cryptocurrency & Bitcoin payment button by NOWPayments"/>
-  </a>
-            </div>
-          </div>
-          
-          <div className="bg-gray-50 px-6 py-4">
-            <h3 className="font-semibold mb-2">What&apos;s included:</h3>
-            <ul className="space-y-1 text-sm">
-              <li>• Credits for account creation</li>
-              <li>• Full access to all features</li>
-              <li>• Credits never expire</li>
-            </ul>
           </div>
         </div>
+        <div className="bg-gray-50 px-6 py-4">
+            <h3 className="font-semibold mb-2">Need Help?</h3>
+            <p className="text-sm text-gray-600">
+              If you face any issues with payment or need a custom plan, 
+              please contact us at <a href="mailto:manojkumarcpyk@gmail.com" className="text-blue-500">manojkumarcpyk@gmail.com</a>
+            </p>
+          </div>
       </div>
       <Footer/>
     </>
-
   );
 }

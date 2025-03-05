@@ -141,7 +141,7 @@ Bootup AI is licensed under the [MIT License](LICENSE).
 
 ## 📬 Contact
 
-- **Email**: manojk030303@gmail.com
+- **Email**: manojkumarcpyk@gmail.com
 - **Twitter**: [@BootupAI](https://x.com/bootupai)
 - **GitHub**: [github.com/manojk0303/bootupai](https://github.com/manojk0303/bootupai)
 
