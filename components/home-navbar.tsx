@@ -86,6 +86,13 @@ export function Navbar() {
               Pricing
             </Link>
             <Link 
+              href="/documentation" 
+              className="text-sm font-medium py-2 hover:text-primary transition-colors"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Documentation
+            </Link>
+            <Link 
               href="/contact" 
               className="text-sm font-medium py-2 hover:text-primary transition-colors"
               onClick={() => setIsMenuOpen(false)}
