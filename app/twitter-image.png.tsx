@@ -125,7 +125,7 @@ export default function HomePage() {
           <div className="text-center mb-8 sm:mb-16">
             <h2 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4">Transparent & Secure</h2>
             <p className="text-sm sm:text-base text-muted-foreground max-w-xl mx-auto px-2">
-              We don't store any data from your audience. Their credentials are used only to create their account and apply your referral code.
+              We don&apos;t store any data from your audience. Their credentials are used only to create their account and apply your referral code.
             </p>
           </div>
         </section>

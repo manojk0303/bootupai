@@ -15,7 +15,7 @@ export default function AboutPage() {
               About <span className="bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent">Bootup AI</span>
             </h1>
             <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto">
-              We're on a mission to help creators and entrepreneurs maximize their referral earnings through simple, transparent technology.
+              We&apos;re on a mission to help creators and entrepreneurs maximize their referral earnings through simple, transparent technology.
             </p>
           </div>
 <br />
@@ -38,7 +38,7 @@ export default function AboutPage() {
                 <h3 className="text-xl font-semibold">Creator-First Approach</h3>
               </div>
               <p className="text-muted-foreground">
-                We build our products with creators' needs at the center, ensuring our solutions truly solve real problems.
+                We build our products with creators&apos; needs at the center, ensuring our solutions truly solve real problems.
               </p>
             </div>
             
@@ -48,7 +48,7 @@ export default function AboutPage() {
                 <h3 className="text-xl font-semibold">Radical Transparency</h3>
               </div>
               <p className="text-muted-foreground">
-                We're upfront about what we do, how we do it, and the value we provide. No hidden fees or unclear terms.
+                We&apos;re upfront about what we do, how we do it, and the value we provide. No hidden fees or unclear terms.
               </p>
             </div>
             
@@ -58,7 +58,7 @@ export default function AboutPage() {
                 <h3 className="text-xl font-semibold">Continuous Improvement</h3>
               </div>
               <p className="text-muted-foreground">
-                We're constantly iterating and improving our products based on user feedback and industry trends.
+                We&apos;re constantly iterating and improving our products based on user feedback and industry trends.
               </p>
             </div>
             

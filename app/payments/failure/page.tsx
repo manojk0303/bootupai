@@ -18,7 +18,7 @@ export default function PaymentFailurePage() {
         </div>
         <h1 className="text-2xl font-bold text-gray-800 mb-2">Payment Failed</h1>
         <p className="text-gray-600 mb-6">
-          We couldn't process your payment. No charges were made to your account.
+          We couldn&apos;t process your payment. No charges were made to your account.
         </p>
         
         <div className="bg-gray-50 p-4 rounded-lg text-left mb-6">

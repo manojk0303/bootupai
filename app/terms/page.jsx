@@ -10,7 +10,7 @@ export default function TermsOfService() {
         <p className="mb-4">Last Updated: March 1, 2025</p>
         
         <h2 className="text-2xl font-semibold mt-8 mb-4">1. Introduction</h2>
-        <p>Welcome to Bootup AI ("we," "our," or "us"). These Terms of Service ("Terms") govern your access to and use of the Bootup AI platform, including any related mobile applications, websites, and services (collectively, the "Service").</p>
+        <p>Welcome to Bootup AI (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;). These Terms of Service (&quot;Terms&quot;) govern your access to and use of the Bootup AI platform, including any related mobile applications, websites, and services (collectively, the &quot;Service&quot;).</p>
         <p>By accessing or using our Service, you agree to be bound by these Terms. If you disagree with any part of these Terms, you may not access the Service.</p>
         
         <h2 className="text-2xl font-semibold mt-8 mb-4">2. Eligibility</h2>
@@ -34,7 +34,7 @@ export default function TermsOfService() {
         <p>You acknowledge that your use of third-party services may be subject to separate terms and conditions imposed by those third parties. We encourage you to review these terms before using their services through our platform.</p>
         
         <h2 className="text-2xl font-semibold mt-8 mb-4">6. User Content</h2>
-        <p>Our Service may allow you to post, link, store, share, and otherwise make available certain information, text, graphics, or other material ("User Content"). You retain all rights in, and are solely responsible for, the User Content you post.</p>
+        <p>Our Service may allow you to post, link, store, share, and otherwise make available certain information, text, graphics, or other material (&quot;User Content&quot;). You retain all rights in, and are solely responsible for, the User Content you post.</p>
         <p>By posting User Content, you grant us a non-exclusive, royalty-free, transferable, sublicensable, worldwide license to use, display, reproduce, modify, and distribute your User Content in connection with operating and providing the Service.</p>
         <p>You represent and warrant that you have all rights necessary to grant the licenses contained in this section, and that your User Content, and our use of such content, does not and will not violate any rights of any third party.</p>
         
@@ -66,7 +66,7 @@ export default function TermsOfService() {
         </ul>
         
         <h2 className="text-2xl font-semibold mt-8 mb-4">11. Disclaimer of Warranties</h2>
-        <p>Your use of the Service is at your sole risk. The Service is provided on an "AS IS" and "AS AVAILABLE" basis. The Service is provided without warranties of any kind, whether express or implied, including, but not limited to, implied warranties of merchantability, fitness for a particular purpose, non-infringement, or course of performance.</p>
+        <p>Your use of the Service is at your sole risk. The Service is provided on an &quot;AS IS&quot; and &quot;AS AVAILABLE&quot; basis. The Service is provided without warranties of any kind, whether express or implied, including, but not limited to, implied warranties of merchantability, fitness for a particular purpose, non-infringement, or course of performance.</p>
         <p>Bootup AI does not warrant that the Service will function uninterrupted, secure, or available at any particular time or location, or that any errors or defects will be corrected.</p>
         
         <h2 className="text-2xl font-semibold mt-8 mb-4">12. Governing Law</h2>
@@ -74,7 +74,7 @@ export default function TermsOfService() {
         <p>Our failure to enforce any right or provision of these Terms will not be considered a waiver of those rights. If any provision of these Terms is held to be invalid or unenforceable by a court, the remaining provisions of these Terms will remain in effect.</p>
         
         <h2 className="text-2xl font-semibold mt-8 mb-4">13. Changes to Terms</h2>
-        <p>We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material, we will try to provide at least 30 days' notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion.</p>
+        <p>We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material, we will try to provide at least 30 day&apos; notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion.</p>
         <p>By continuing to access or use our Service after those revisions become effective, you agree to be bound by the revised terms. If you do not agree to the new terms, please stop using the Service.</p>
         
         <h2 className="text-2xl font-semibold mt-8 mb-4">14. Contact Us</h2>

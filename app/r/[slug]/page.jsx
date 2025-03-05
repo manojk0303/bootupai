@@ -39,7 +39,7 @@ export default async function ReferralPage({ params }) {
         <h1 class="text-2xl font-semibold text-gray-800 mb-3">Unable to load referral link</h1>
         
         <p class="text-gray-600 mb-8 leading-relaxed">
-          We couldn't process your referral link. This may be due to an expired URL or a missing parameter. Please try again or contact support if the issue persists.
+          We couldn&apos;t process your referral link. This may be due to an expired URL or a missing parameter. Please try again or contact support if the issue persists.
         </p>
         
         <a href="/" class="pb-10 inline-flex items-center justify-center bg-blue-500 hover:bg-blue-600 text-black font-medium px-6 py-3 rounded-lg transition-all duration-200 transform hover:-translate-y-0.5 hover:shadow-md">

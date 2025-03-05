@@ -78,7 +78,7 @@ export default function UpdatePasswordForm() {
         <CardContent className="pt-6">
           <div className="text-center mb-4">
             <p className="text-muted-foreground">
-              You are signed in with an external provider . Password management is handled by that service, so you don't need to set a password here.
+              You are signed in with an external provider . Password management is handled by that service, so you don&apos;t need to set a password here.
             </p>
           </div>
         </CardContent>

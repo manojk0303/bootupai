@@ -124,7 +124,7 @@ export default function PricingPage() {
         </div>
         
         <div className="bg-gray-50 px-6 py-4">
-          <h3 className="font-semibold mb-2">What's included:</h3>
+          <h3 className="font-semibold mb-2">What&apos;s included:</h3>
           <ul className="space-y-1 text-sm">
             <li>• Credits for account creation</li>
             <li>• Full access to all features</li>

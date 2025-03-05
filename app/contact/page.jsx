@@ -26,7 +26,7 @@ export default function ContactPage() {
             Get in Touch
           </h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Have questions about Bootup AI? We're here to help. Contact our support team .
+            Have questions about Bootup AI? We&apos;  re here to help. Contact our support team .
           </p>
         </section>
 

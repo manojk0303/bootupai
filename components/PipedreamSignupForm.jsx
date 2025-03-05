@@ -128,7 +128,7 @@ export default function PipedreamSignupForm({ service, creator }) {
         
         <div className="sm:mx-auto sm:w-full sm:max-w-md relative z-10">
           <h1 className="mt-2 text-center text-3xl font-extrabold text-gray-900 mb-8">
-            Join {service} via {creator}'s referral
+            Join {service} via {creator}&apos;s referral
           </h1>
         </div>
     
@@ -143,7 +143,7 @@ export default function PipedreamSignupForm({ service, creator }) {
               <h3 className="mt-3 text-xl font-bold text-green-800">Request Queued Successfully!</h3>
               <div className="mt-4 text-sm text-green-700 space-y-3">
                 <p className="font-medium">Your account request is being processed. Check your email soon!</p>
-                <p>You'll receive an email with your login credentials once your account is created.</p>
+                <p>You&apos;ll receive an email with your login credentials once your account is created.</p>
                 
                 <div className="mt-4 p-3 bg-white rounded-md border border-green-200">
                   <p className="text-gray-700 font-medium mb-1">Track your request status: {statusUrl}</p>

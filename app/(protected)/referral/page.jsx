@@ -104,7 +104,7 @@ export default function ReferralLinks() {
             <div className="bg-blue-50 rounded-lg p-4 sm:p-6 inline-block">
               <Link2 className="h-10 w-10 sm:h-12 sm:w-12 text-blue-500 mx-auto mb-3 sm:mb-4" />
               <p className="text-gray-600 mb-3 sm:mb-4 text-sm sm:text-base">
-                You don't have any referral links yet.
+                You don&apos;t have any referral links yet.
               </p>
               <button className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition text-sm sm:text-base">
                 Create Your First Link

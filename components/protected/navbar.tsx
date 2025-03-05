@@ -1,5 +1,6 @@
 // @components/Navbar.tsx
 'use client';
+import Image from 'next/image';
 
 import Link from 'next/link';
 import { Menu } from 'lucide-react';
@@ -68,7 +69,7 @@ export function Navbar() {
           href='/dashboard/create-referral' 
           className='flex items-center space-x-2'
         >
-          <img src={"/logo.png"} className='h-8 w-8' alt="Bootup AI Logo"/>
+          <Image src="/logo.png" alt="Bootup AI Logo" width={32} height={32} />
           <span className='hidden text-xl font-bold sm:inline-block'>
             Bootup AI
           </span>

@@ -10,7 +10,7 @@ export default function PrivacyPolicy() {
         <p className="mb-4">Last Updated: March 1, 2025</p>
         
         <h2 className="text-2xl font-semibold mt-8 mb-4">1. Introduction</h2>
-        <p>At Bootup AI ("we," "our," or "us"), we respect your privacy and are committed to protecting the personal information you provide to us. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our platform, including any related mobile applications, websites, and services (collectively, the "Service").</p>
+        <p>At Bootup AI (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;), we respect your privacy and are committed to protecting the personal information you provide to us. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our platform, including any related mobile applications, websites, and services (collectively, the &quot;Service&quot;).</p>
         <p>Please read this Privacy Policy carefully. By accessing or using our Service, you acknowledge that you have read, understood, and agree to be bound by this Privacy Policy. If you do not agree with our policies and practices, please do not use our Service.</p>
         
         <h2 className="text-2xl font-semibold mt-8 mb-4">2. Information We Collect</h2>
@@ -93,7 +93,7 @@ export default function PrivacyPolicy() {
         </ul>
         <p>To exercise any of these rights, please contact us using the contact information provided below.</p>
         
-        <h2 className="text-2xl font-semibold mt-8 mb-4">8. Children's Privacy</h2>
+        <h2 className="text-2xl font-semibold mt-8 mb-4">8. Children&apos;s Privacy</h2>
         <p>Our Service is not directed to children under the age of 18. We do not knowingly collect personal information from children under 18. If you are a parent or guardian and you believe your child has provided us with personal information, please contact us. If we discover that a child under 18 has provided us with personal information, we will delete such information from our servers.</p>
         
         <h2 className="text-2xl font-semibold mt-8 mb-4">9. International Data Transfers</h2>
@@ -108,7 +108,7 @@ export default function PrivacyPolicy() {
         <p>You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some portions of our Service.</p>
         
         <h2 className="text-2xl font-semibold mt-8 mb-4">12. Changes to This Privacy Policy</h2>
-        <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last Updated" date at the top of this Privacy Policy.</p>
+        <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the &quot;Last Updated&quot; date at the top of this Privacy Policy.</p>
         <p>You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.</p>
         
         <h2 className="text-2xl font-semibold mt-8 mb-4">13. Contact Us</h2>
