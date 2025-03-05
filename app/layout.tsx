@@ -20,6 +20,9 @@ export const metadata: Metadata = {
   title: 'Bootup AI',
   description:
     'Bootup AI helps users maximize referral earnings by simplifying link sharing and automating account creation. It ensures referral codes are used efficiently, turning missed opportunities into rewards.',
+  icons: {
+      icon: '/favicon.ico', // Ensure favicon.ico is in the `public/` folder
+    },
   openGraph: {
     url: '/',
     title: 'Bootup AI',

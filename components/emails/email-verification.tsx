@@ -1,5 +1,5 @@
 export function getVerificationEmailHtml(name: string | null, verifyLink: string): string {
-  const baseUrl = process.env.NEXT_BASE_URL || '';
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || '';
   
   return `
     <html>

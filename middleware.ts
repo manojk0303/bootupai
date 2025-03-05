@@ -21,7 +21,7 @@ export default auth((req) => {
   const isAuthRoute = authRoutes.includes(nextUrl.pathname);
   // Add referral route check directly in middleware
   const isReferralRoute = nextUrl.pathname.startsWith('/r/');
-  const isAboutRoute = nextUrl.pathname.startsWith('/about') || nextUrl.pathname.startsWith('/pricing') || nextUrl.pathname.startsWith('/contact');
+  const isAboutRoute = nextUrl.pathname.startsWith('/about') || nextUrl.pathname.startsWith('/pricing') || nextUrl.pathname.startsWith('/contact') || nextUrl.pathname.startsWith('/privacy') || nextUrl.pathname.startsWith('/terms');
 
     // Handle API routes with API key verification
     if (isApiRoute && !isApiAuthRoute) {

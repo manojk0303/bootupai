@@ -1,6 +1,6 @@
 
 export function getPasswordResetEmailHtml(name: string | null, resetLink: string): string {
-  const baseUrl = process.env.NEXT_BASE_URL || '';
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || '';
   
   return `
     <html>
