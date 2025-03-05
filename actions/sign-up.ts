@@ -1,8 +1,10 @@
-// actions/sign-up.ts
 'use server';
 
+import { hashPassword } from '@/lib/password'; // new import
+
+// actions/sign-up.ts
+
 import * as z from 'zod';
-import bcrypt from 'bcryptjs';
 
 import { db } from '@/lib/db';
 import { SignUpSchema } from '@/schemas';
@@ -19,10 +21,7 @@ export async function signUp(values: z.infer<typeof SignUpSchema>) {
 
   const { email, password, name } = validatedFields.data;
 
-  const saltRounds = 10;
-  const salt = await bcrypt.genSalt(saltRounds);
-  const hashedPassword = await bcrypt.hash(password, salt);
-
+  const hashedPassword = await hashPassword(password);
   const existingUser = await getUserByEmail(email);
 
   if (existingUser) {

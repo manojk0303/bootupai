@@ -1,7 +1,11 @@
 'use server';
 
+import { hashPassword } from '@/lib/password'; // new import
+
+
+// actions/reset-password.ts
+
 import * as z from 'zod';
-import bcrypt from 'bcryptjs';
 
 import { db } from '@/lib/db';
 import { getUserByEmail } from '@/data/user';
@@ -42,9 +46,7 @@ export async function resetPassword(
     return { error: 'Email does not exist.' };
   }
 
-  const saltRounds = 10;
-  const salt = await bcrypt.genSalt(saltRounds);
-  const hashedPassword = await bcrypt.hash(password, salt);
+  const hashedPassword = await hashPassword(password);
 
   await db.user.update({
     where: {

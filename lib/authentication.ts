@@ -1,5 +1,5 @@
 import { auth } from '@/auth';
-import { db } from '@/lib/db'; // Adjust the import path as needed
+import { db } from '@/lib/db';
 
 export async function currentUser() {
   const session = await auth();
@@ -9,5 +9,10 @@ export async function currentUser() {
   const user = await db.user.findUnique({
     where: { id: session.user.id },
   });
-  return user;
+
+  // Add isOAuth check
+  return user ? {
+    ...user,
+    isOAuth: session.user.email !== user.email // This is a simple example, adjust as needed
+  } : null;
 }

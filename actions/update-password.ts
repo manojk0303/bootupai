@@ -1,7 +1,8 @@
 'use server';
 
+import { hashPassword, comparePassword } from '@/lib/password'; // new import
+
 import * as z from 'zod';
-import bcrypt, { compare } from 'bcryptjs';
 
 import { db } from '@/lib/db';
 import { update } from '@/auth';
@@ -28,15 +29,13 @@ export async function updatePassword(
     return { error: 'Unauthorized.' };
   }
 
-  const passwordsMatch = await compare(values.currentPassword, dbUser.password);
+  const passwordsMatch = await comparePassword(values.currentPassword, dbUser.password);
 
   if (!passwordsMatch) {
     return { error: 'Incorrect password.' };
   }
 
-  const saltRounds = 10;
-  const salt = await bcrypt.genSalt(saltRounds);
-  const hashedPassword = await bcrypt.hash(values.newPassword, salt);
+  const hashedPassword = await hashPassword(values.newPassword);
 
   const updatedUser = await db.user.update({
     where: {

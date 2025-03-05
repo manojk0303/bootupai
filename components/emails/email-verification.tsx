@@ -1,5 +1,5 @@
 export function getVerificationEmailHtml(name: string | null, verifyLink: string): string {
-  const baseUrl = process.env.AUTH_URL || '';
+  const baseUrl = process.env.NEXT_BASE_URL || '';
   
   return `
     <html>
@@ -36,6 +36,15 @@ export function getVerificationEmailHtml(name: string | null, verifyLink: string
               Bootup AI
             </a>
           </p>
+          <br/>
+
+            <p style="color: #6b7280; font-size: 12px; text-align: center; margin-top: 10px;">
+            If you have any queries or need assistance, feel free to reach out to 
+            <a href="mailto:manojkumarcpyk@gmail.com" style="color: #111827; font-weight: 600; text-decoration: none;">
+              manojkumarcpyk@gmail.com
+            </a>.
+          </p>
+
         </div>
       </body>
     </html>
