@@ -148,7 +148,7 @@ export default function PipedreamSignupForm({ service, creator }) {
                 <div className="mt-4 p-3 bg-white rounded-md border border-green-200">
                   <p className="text-gray-700 font-medium mb-1">Track your request status: {statusUrl}</p>
                   <div className="bg-gray-100 p-2 rounded text-xs font-mono overflow-auto">
-                    {statusMessage || "Status URL will appear here"}
+                    {statusMessage || "Your creation request will be processed soon"}
                   </div>
                 </div>
               </div>
