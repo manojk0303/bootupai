@@ -34,10 +34,12 @@ export default function HomePage() {
   </p>
 
   <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-8">
+    <SignInButton>
     <Button size="lg" className="gap-2 w-full sm:w-auto">
       Get Started
       <ArrowRightIcon className="h-4 w-4" />
     </Button>
+    </SignInButton>
     <Button variant="outline" size="lg" asChild className="w-full sm:w-auto mt-2 sm:mt-0">
       <Link href="#how-it-works">
         How It Works
