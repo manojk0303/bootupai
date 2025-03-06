@@ -191,7 +191,7 @@
         <div className="prose max-w-none">
           <p className="text-sm sm:text-base">
             Currently, BootUp AI fully supports Pipedream for automated account creation and referral processing. 
-            Our implementation allows you to leverage Pipedream's powerful workflow automation capabilities 
+            Our implementation allows you to leverage Pipedream&apos;s powerful workflow automation capabilities 
             while enjoying the seamless account creation experience that BootUp AI provides.
           </p>
           
@@ -211,7 +211,7 @@
           <Mail className="w-6 h-6 text-blue-500 mr-0 mb-3 sm:mb-0 sm:mr-3 sm:mt-1 flex-shrink-0" />
           <div>
             <p className="text-sm sm:text-base text-gray-700 mb-3 sm:mb-4">
-              We're constantly expanding our service offerings based on user needs and market demand. 
+              We&apos;re constantly expanding our service offerings based on user needs and market demand. 
               If you would like to see support for additional services or platforms, please reach out 
               to our team.
             </p>
@@ -222,8 +222,8 @@
                 <span className="break-all">manojkumarcpyk@gmail.com</span>
               </a>
               <p className="text-xs sm:text-sm text-gray-600 mt-2">
-                Please include details about the service you'd like to integrate and your specific use case.
-                We're happy to explore custom options tailored to your requirements.
+                Please include details about the service you&apos;d like to integrate and your specific use case.
+                We&apos;re happy to explore custom options tailored to your requirements.
               </p>
             </div>
           </div>
