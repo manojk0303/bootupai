@@ -324,7 +324,7 @@ export default function PipedreamBulkUpload() {
 
   // Updated JSX with improved UI and referral link input
   return (
-    <div className="px-4 py-5 sm:p-6">
+    <div className="px-0 sm:px-4 py-5 sm:p-6">
       {/* Referral link input */}
       <div className="mb-8">
         <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -349,61 +349,113 @@ export default function PipedreamBulkUpload() {
           This should be the full referral URL provided to you
         </p>
       </div>
-<div className="bg-white p-6 shadow rounded-md">
-  <h2 className="text-2xl font-bold text-gray-800 mb-6">Upload Account Data</h2>
-  
-  {/* Download Template Section */}
-  <div className="mb-6">
-    <p className="text-gray-600 mb-2">Download Template</p>
-    <div className="flex flex-col sm:flex-row gap-3">
-      <button
-        onClick={() => generateSampleTemplate('csv')}
-        className="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 transition-colors duration-200"
-      >
-        CSV
-      </button>
-      <button
-        onClick={() => generateSampleTemplate('json')}
-        className="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 transition-colors duration-200"
-      >
-        JSON
-      </button>
-    </div>
-  </div>
-  
-  {/* File Upload Input */}
-  <div className="mb-6">
-    <label className="block text-gray-600 text-sm font-medium mb-2">
-      Upload File (CSV/JSON)
-    </label>
-    <input 
-      ref={fileInputRef}
-      type="file"
-      accept=".csv,.json"
-      onChange={handleFileSelect}
-      className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100"
-    />
-    {fileName && (
-      <div className="mt-2 flex items-center gap-3">
-        <span className="text-gray-700 text-sm">{fileName}</span>
-        <button
-          onClick={resetFile}
-          className="px-3 py-1 border border-red-300 rounded-md text-sm font-medium text-red-700 bg-red-50 hover:bg-red-100 transition-colors duration-200"
-        >
-          Clear
-        </button>
+      {/* Requirements section - place this after the referral link input and before the upload section */}
+      <div className="mb-8 bg-blue-50 rounded-lg p-5 border border-blue-200 shadow-sm">
+        <h3 className="text-lg font-medium text-blue-800 mb-3">Account Requirements</h3>
+        
+        <div className="space-y-4">
+          <div className="bg-white rounded-md p-4 shadow-sm">
+            <h4 className="text-sm font-semibold text-gray-700 flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              Email
+            </h4>
+            <p className="mt-2 text-sm text-gray-600">
+              Must not already have a Pipedream account.
+            </p>
+          </div>
+
+          <div className="bg-white rounded-md p-4 shadow-sm">
+            <h4 className="text-sm font-semibold text-gray-700 flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+              </svg>
+              Password
+            </h4>
+            <ul className="mt-2 text-sm text-gray-600 space-y-1 ml-4 list-disc">
+              <li>Minimum 12 characters</li>
+              <li>At least 1 uppercase letter</li>
+              <li>At least 1 lowercase letter</li>
+              <li>At least 1 number</li>
+              <li>At least 1 special character</li>
+            </ul>
+          </div>
+
+          <div className="bg-white rounded-md p-4 shadow-sm">
+            <h4 className="text-sm font-semibold text-gray-700 flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+              </svg>
+              Building Purpose
+            </h4>
+            <p className="mt-2 text-sm text-gray-600">
+              Must be one of the following:
+            </p>
+            <ul className="mt-2 text-sm text-gray-600 space-y-1 ml-4 list-disc">
+              <li>Automating internal processes</li>
+              <li>AI agents</li>
+              <li>Workflows for my clients</li>
+              <li>Integrations for my app</li>
+            </ul>
+          </div>
+        </div>
       </div>
-    )}
-  </div>
-  
-  {/* Error Message */}
-  {parseError && (
-    <div className="mb-4 p-4 bg-red-50 border border-red-200 rounded-md">
-      <p className="text-red-700 font-semibold mb-1">File Parsing Error</p>
-      <p className="text-red-600 text-sm">{parseError}</p>
-    </div>
-  )}
-</div>
+      <div className="bg-white p-6 shadow rounded-md">
+        <h2 className="text-2xl font-bold text-gray-800 mb-6">Upload Account Data</h2>
+        
+        {/* Download Template Section */}
+        <div className="mb-6">
+          <p className="text-gray-600 mb-2">Download Template</p>
+          <div className="flex flex-col sm:flex-row gap-3">
+            <button
+              onClick={() => generateSampleTemplate('csv')}
+              className="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 transition-colors duration-200"
+            >
+              CSV
+            </button>
+            <button
+              onClick={() => generateSampleTemplate('json')}
+              className="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 transition-colors duration-200"
+            >
+              JSON
+            </button>
+          </div>
+        </div>
+        
+        {/* File Upload Input */}
+        <div className="mb-6">
+          <label className="block text-gray-600 text-sm font-medium mb-2">
+            Upload File (CSV/JSON)
+          </label>
+          <input 
+            ref={fileInputRef}
+            type="file"
+            accept=".csv,.json"
+            onChange={handleFileSelect}
+            className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100"
+          />
+          {fileName && (
+            <div className="mt-2 flex items-center gap-3">
+              <span className="text-gray-700 text-sm">{fileName}</span>
+              <button
+                onClick={resetFile}
+                className="px-3 py-1 border border-red-300 rounded-md text-sm font-medium text-red-700 bg-red-50 hover:bg-red-100 transition-colors duration-200"
+              >
+                Clear
+              </button>
+            </div>
+          )}
+        </div>
+        
+        {/* Error Message */}
+        {parseError && (
+          <div className="mb-4 p-4 bg-red-50 border border-red-200 rounded-md">
+            <p className="text-red-700 font-semibold mb-1">File Parsing Error</p>
+            <p className="text-red-600 text-sm">{parseError}</p>
+          </div>
+        )}
+      </div>
 
 
       {/* Improved table UI */}
