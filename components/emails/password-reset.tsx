@@ -10,7 +10,7 @@ export function getPasswordResetEmailHtml(name: string | null, resetLink: string
       <body style="background-color: white; color: #1a1a1a; font-family: sans-serif; margin: 0; padding: 0;">
         <div style="max-width: 480px; margin: 0 auto; padding-top: 20px; padding-bottom: 48px;">
           <div style="display: flex; align-items: center; color: #333333;">
-            <img src="${baseUrl}/logo.png" width="32" height="32" alt="Bootup AI" style="margin-right: 4px; margin-left: -4px;">
+            <img src="https://i.ibb.co/vCPffJgv/logo.png" width="32" height="32" alt="Bootup AI" style="margin-right: 4px; margin-left: -4px;">
             <h1 style="font-size: 30px; font-weight: 700; margin: 0;">Bootup AI</h1>
           </div>
 

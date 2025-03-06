@@ -180,7 +180,7 @@
       <div className="bg-white p-4 sm:p-6 rounded-xl shadow-md">
         <div className="flex flex-col sm:flex-row items-start sm:items-center mb-6">
           <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-lg bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center mb-3 sm:mb-0 sm:mr-4">
-            <Zap className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
+          <img src="https://i.ibb.co/mFyyLk51/image.png" alt="image" />
           </div>
           <div>
             <h3 className="text-xl sm:text-2xl font-semibold">Pipedream</h3>
