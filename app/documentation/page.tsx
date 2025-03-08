@@ -178,7 +178,7 @@
 
       {/* Pipedream service card with responsive layout */}
       <div className="bg-white p-4 sm:p-6 rounded-xl shadow-md">
-        <div className="flex flex-col sm:flex-row items-start sm:items-center mb-6">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center mb-6">
           <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-lg bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center mb-3 sm:mb-0 sm:mr-4">
           <img src="https://i.ibb.co/mFyyLk51/image.png" alt="image" />
           </div>
@@ -187,15 +187,24 @@
             <p className="text-gray-600">Workflow automation platform integration</p>
           </div>
         </div>
+
+        <div className= " mt-2 flex flex-col sm:flex-row items-start sm:items-center mb-6">
+          <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-lg bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center mb-3 sm:mb-0 sm:mr-4">
+          <img src="https://i.ibb.co/Xr9WdwWy/image.png" alt="image" />
+          </div>
+          <div>
+            <h3 className="text-xl sm:text-2xl font-semibold">Airtable</h3>
+            <p className="text-gray-600">Database and spreadsheet hybrid platform</p>
+        </div>
+        </div>
+        
         
         <div className="prose max-w-none">
           <p className="text-sm sm:text-base">
-            Currently, BootUp AI fully supports Pipedream for automated account creation and referral processing. 
-            Our implementation allows you to leverage Pipedream&apos;s powerful workflow automation capabilities 
-            while enjoying the seamless account creation experience that BootUp AI provides.
+          BootUp AI supports multiple platforms for automated account creation and referral processing. Our implementation allows you to leverage powerful automation capabilities while enjoying a seamless account creation experience.
           </p>
           
-          <h4 className="text-lg sm:text-xl font-semibold mt-4 sm:mt-6">Pipedream Integration Features:</h4>
+          <h4 className="text-lg sm:text-xl font-semibold mt-4 sm:mt-6">Key Features:</h4>
           <ul className="list-disc list-inside space-y-1 sm:space-y-2 text-gray-600 ml-2 sm:ml-4 text-sm sm:text-base mt-3">
             <li>Single-click account creation with referral tracking</li>
             <li>Bulk account processing through CSV uploads</li>

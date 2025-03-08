@@ -11,6 +11,9 @@ function generateRandomSlug(userId, service) {
   if (service.toLowerCase() === 'pipedream') {
     return `${randomPart}-${userPart}-pd`;
   }
+  else if (service.toLowerCase() === 'airtable') {
+    return `${randomPart}-${userPart}-at`;
+  }
 
   return `${randomPart}-${userPart}`;
 }

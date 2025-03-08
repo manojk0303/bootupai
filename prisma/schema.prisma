@@ -24,7 +24,7 @@ model User {
 
 model ReferralLink {
   id        String   @id @default(cuid())
-  service   Service  @default(PIPEDREAM)
+  service   Service 
   code      String
   slug      String   @unique
   url       String
@@ -93,6 +93,7 @@ model PricingSetting {
 
 enum Service {
   PIPEDREAM
+  AIRTABLE
 }
 
 enum PaymentStatus {

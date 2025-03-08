@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import PipedreamBulkUpload from '../../../components/bulk-services/PipedreamBulkUpload'
-
+import AirtableBulkUpload from '../../../components/bulk-services/AirtableBulkUpload'
 export default function ServiceSelectionPage() {
   const [selectedService, setSelectedService] = useState(null)
   const router = useRouter()
@@ -15,8 +15,13 @@ export default function ServiceSelectionPage() {
       id: 'pipedream',
       name: 'Pipedream',
       description: 'Connect APIs, remarkably fast. Build and deploy workflows with built-in apps and code.',
-      logoUrl: 'https://pipedream.com/_static/embed-image.5f8189f7.png',
       requirements: 'Email, password (12+ chars with special chars, numbers, uppercase), building purpose'
+    },
+    {
+      id: 'airtable',
+      name: 'Airtable',
+      description: 'Organize anything, with anyone, from anywhere.',
+      requirements: 'Email, password (8+ chars), name'
     }
     // Future services can be added here
     // {
@@ -33,6 +38,8 @@ export default function ServiceSelectionPage() {
     switch(selectedService) {
       case 'pipedream':
         return <PipedreamBulkUpload />
+      case 'airtable':
+        return <AirtableBulkUpload />
       // Add cases for future services
       default:
         return null
@@ -76,7 +83,7 @@ export default function ServiceSelectionPage() {
                     <button
   type="button"
   onClick={() => setSelectedService(service.id)}
-  className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-2 border border-green-600 text-sm font-semibold rounded-lg shadow-md text-green-700 bg-green-100 hover:bg-green-600 hover:text-white hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-all duration-300 ease-in-out"
+  className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-2 border border-green-600 text-sm font-semibold rounded-lg shadow-md text-green-700 bg-green-100 hover:bg-green-600 hover:text-white hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-all duration-300 ease-in-out"
 >
   Select
 </button>

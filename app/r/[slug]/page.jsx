@@ -2,7 +2,7 @@
 import { db } from '@/lib/db';
 import { notFound } from 'next/navigation';
 import PipedreamSignupForm from '@/components/PipedreamSignupForm';
-
+import AirtableSignupForm from '@components/AirtableSignupForm';
 export default async function ReferralPage({ params }) {
   let referralData;
   
@@ -63,7 +63,13 @@ export default async function ReferralPage({ params }) {
           service={referralData.service}
           creator={referralData.creator?.name || 'Anonymous'}
         />
-      ) : (
+      ) : slugSuffix === 'at' ? (
+        <AirtableSignupForm 
+          service={referralData.service}
+          creator={referralData.creator?.name || 'Anonymous'}
+        />
+      ) : 
+      (
         <div className="flex items-center justify-center h-full">
           <h1 className="text-lg font-semibold">Coming Soon...</h1>
         </div>

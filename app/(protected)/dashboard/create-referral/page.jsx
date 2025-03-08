@@ -90,6 +90,7 @@ export default function ReferralPage() {
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="PIPEDREAM">Pipedream</SelectItem>
+                  <SelectItem value="AIRTABLE">Airtable</SelectItem>
                 </SelectContent>
               </Select>
             </div>

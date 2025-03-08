@@ -15,56 +15,49 @@ export default function PipedreamBulkUpload() {
   const [processingStatus, setProcessingStatus] = useState([])
   const [isProcessing, setIsProcessing] = useState(false)
   const [overallProgress, setOverallProgress] = useState(0)
-  //   REFERAL
+//   REFERAL
   const [referralLinks, setReferralLinks] = useState([])
   const [selectedReferralId, setSelectedReferralId] = useState('')
   const [isLoadingReferrals, setIsLoadingReferrals] = useState(false)
   const [referralError, setReferralError] = useState('')
-  const selectedService = 'PIPEDREAM';
+  const selectedService = 'AIRTABLE';
 
   const fileInputRef = useRef(null)
   const router = useRouter()
 
-  // Building purpose options
-  const buildingOptions = [
-    "Automating internal processes",
-    "AI agents",
-    "Workflows for my clients",
-    "Integrations for my app"
-  ]
 
-    // Add this function to fetch referral links
+  // Add this function to fetch referral links
 const fetchReferralLinks = async (service) => {
-  setIsLoadingReferrals(true)
-  setReferralError('')
-  
-  try {
-    const response = await axios.get(`/api/referral/service/${service}`)
-    if (response.data.status === 'success') {
-      setReferralLinks(response.data.referralLinks)
-      
-      // Auto-select the first referral link if available
-      if (response.data.referralLinks.length > 0) {
-        setSelectedReferralId(response.data.referralLinks[0].id)
-      } else {
-        setSelectedReferralId('')
-        alert("you need to create referal link for airtable from create-referal section")
+    setIsLoadingReferrals(true)
+    setReferralError('')
+    
+    try {
+      const response = await axios.get(`/api/referral/service/${service}`)
+      if (response.data.status === 'success') {
+        setReferralLinks(response.data.referralLinks)
+        
+        // Auto-select the first referral link if available
+        if (response.data.referralLinks.length > 0) {
+          setSelectedReferralId(response.data.referralLinks[0].id)
+        } else {
+          setSelectedReferralId('')
+          alert("you need to create referal link for airtable from create-referal section")
+        }
       }
+    } catch (error) {
+      console.error('Error fetching referral links:', error)
+      setReferralError('Failed to load referral links. Please try again.')
+    } finally {
+      setIsLoadingReferrals(false)
     }
-  } catch (error) {
-    console.error('Error fetching referral links:', error)
-    setReferralError('Failed to load referral links. Please try again.')
-  } finally {
-    setIsLoadingReferrals(false)
   }
-}
+  
+  // Add this useEffect to load referral links when the component mounts
+  useEffect(() => {
+    fetchReferralLinks(selectedService)
+  }, []) // Re-fetch when service changes
 
-// Add this useEffect to load referral links when the component mounts
-useEffect(() => {
-  fetchReferralLinks(selectedService)
-}, []) // Re-fetch when service changes
-
-
+  
 
   // Reset file and related states
   const resetFile = () => {
@@ -110,7 +103,7 @@ useEffect(() => {
             const headers = rows[0].split(',').map(header => header.trim())
             
             // Check if required headers exist
-            const requiredHeaders = ['email', 'password', 'buildingPurpose']
+            const requiredHeaders = ['email', 'password', 'name']
             const missingHeaders = requiredHeaders.filter(header => !headers.includes(header))
             
             if (missingHeaders.length > 0) {
@@ -163,7 +156,7 @@ useEffect(() => {
             }
             
             // Check if each object has required fields
-            const requiredFields = ['email', 'password', 'buildingPurpose']
+            const requiredFields = ['email', 'password', 'name']
             const invalidEntries = data.findIndex(entry => 
               !requiredFields.every(field => Object.keys(entry).includes(field))
             )
@@ -201,20 +194,15 @@ useEffect(() => {
             accountErrors.push('Password is required')
           } else {
             const passwordErrors = []
-            if (account.password.length < 12) passwordErrors.push('min 12 chars')
-            if (!/[A-Z]/.test(account.password)) passwordErrors.push('uppercase')
-            if (!/[a-z]/.test(account.password)) passwordErrors.push('lowercase')
-            if (!/[0-9]/.test(account.password)) passwordErrors.push('number')
-            if (!/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(account.password)) passwordErrors.push('special char')
-            
+            if (account.password.length < 8) passwordErrors.push('min 8 chars')
             if (passwordErrors.length > 0) {
               accountErrors.push(`Password missing: ${passwordErrors.join(', ')}`)
             }
           }
           
           // Building purpose validation
-          if (!account.buildingPurpose || !buildingOptions.includes(account.buildingPurpose)) {
-            accountErrors.push('Invalid building purpose')
+          if (!account.name || account.name == "") {
+            accountErrors.push('Name is required')
           }
           
           if (accountErrors.length > 0) {
@@ -238,11 +226,6 @@ useEffect(() => {
       alert("No valid accounts to process")
       return
     }
-
-    if (accountsData.length === 0) {
-      alert("No valid accounts to process")
-      return
-    }
     const getSelectedReferralSlug = () => {
         if (!selectedReferralId) {
           setReferralError('Please select a referral link')
@@ -255,7 +238,6 @@ useEffect(() => {
 
     // Extract slug from referral link input
     const slug = getSelectedReferralSlug()
-
 
     if (!slug) {
       setReferralError('Invalid referral link. Please check the URL format.')
@@ -276,7 +258,7 @@ useEffect(() => {
         setOverallProgress(Math.floor((i / accountsData.length) * 100))
         
         try {
-          const response = await fetch('/api/create-account', {
+          const response = await fetch('/api/create-account/airtable', {
             method: 'POST',
             headers: { 
               'Content-Type': 'application/json',
@@ -285,9 +267,9 @@ useEffect(() => {
             body: JSON.stringify({ 
               email: accountsData[i].email, 
               password: accountsData[i].password, 
-              buildingPurpose: accountsData[i].buildingPurpose,
+              name: accountsData[i].name,
               slug: slug,
-              service: 'pipedream'
+              service: 'airtable'
             })
           })
           
@@ -331,26 +313,26 @@ useEffect(() => {
   }
    // Generate sample template for download
    const generateSampleTemplate = (format) => {
-    const fileName = `pipedream_template.${format}`
+    const fileName = `airtable_template.${format}`
     let fileContent = ''
     let fileType = ''
     
     if (format === 'csv') {
-      fileContent = 'email,password,buildingPurpose\n'
-      fileContent += 'user1@example.com,SecurePassword1!,Automating internal processes\n'
-      fileContent += 'user2@example.com,AnotherSecure2@,AI agents'
+      fileContent = 'email,password,Name\n'
+      fileContent += 'user1@example.com,SecurePassword1!,John Doe\n'
+      fileContent += 'user2@example.com,AnotherSecure2@,Jhonny Deep'
       fileType = 'text/csv'
     } else if (format === 'json') {
       const sampleData = [
         {
           email: 'user1@example.com',
           password: 'SecurePassword1!',
-          buildingPurpose: 'Automating internal processes'
+          name: 'John Doe'
         },
         {
           email: 'user2@example.com',
           password: 'AnotherSecure2@',
-          buildingPurpose: 'AI agents'
+          name: 'Jhonny Deep'
         }
       ]
       fileContent = JSON.stringify(sampleData, null, 2)
@@ -386,7 +368,7 @@ useEffect(() => {
             className="block w-full px-4 py-2 border rounded-md shadow-sm focus:ring-green-500 focus:border-green-500 border-gray-300"
             >
             {referralLinks.map(link => (
-                <option key={link.id} className='w-full' value={link.id}>
+                <option key={link.id} value={link.id}>
                 {credentials.domain.slice(0,-1)} {link.url} ({link.signups || 0} signups)
                 </option>
             ))}
@@ -404,11 +386,11 @@ useEffect(() => {
         )}
       </div>
       {/* Requirements section - place this after the referral link input and before the upload section */}
-      <div className="mb-8 mt-6 bg-blue-50 rounded-lg sm:p-8 p-6 border border-blue-200 shadow-sm">
+      <div className="mt-6 mb-8 bg-blue-50 rounded-lg sm:p-8 p-6 border border-blue-200 shadow-sm">
         <h3 className="text-lg font-medium text-blue-800 mb-3">Account Requirements</h3>
         
         <div className="space-y-4">
-          <div className="bg-white rounded-md p-4 shadow-sm">
+          <div className="bg-white rounded-md sm:p-4 shadow-sm">
             <h4 className="text-sm font-semibold text-gray-700 flex items-center">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -416,11 +398,11 @@ useEffect(() => {
               Email
             </h4>
             <p className="mt-2 text-sm text-gray-600">
-              Must not already have a Pipedream account.
+              Must not already have a Airtable account.
             </p>
           </div>
 
-          <div className="bg-white rounded-md p-4 shadow-sm">
+          <div className="bg-white rounded-md sm:p-4 p-2 shadow-sm">
             <h4 className="text-sm font-semibold text-gray-700 flex items-center">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
@@ -428,11 +410,7 @@ useEffect(() => {
               Password
             </h4>
             <ul className="mt-2 text-sm text-gray-600 space-y-1 ml-4 list-disc">
-              <li>Minimum 12 characters</li>
-              <li>At least 1 uppercase letter</li>
-              <li>At least 1 lowercase letter</li>
-              <li>At least 1 number</li>
-              <li>At least 1 special character</li>
+              <li>Minimum 8 characters</li>
             </ul>
           </div>
 
@@ -441,17 +419,11 @@ useEffect(() => {
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
               </svg>
-              Building Purpose
+              Name
             </h4>
             <p className="mt-2 text-sm text-gray-600">
-              Must be one of the following:
+              Should be a valid name
             </p>
-            <ul className="mt-2 text-sm text-gray-600 space-y-1 ml-4 list-disc">
-              <li>Automating internal processes</li>
-              <li>AI agents</li>
-              <li>Workflows for my clients</li>
-              <li>Integrations for my app</li>
-            </ul>
           </div>
         </div>
       </div>
@@ -537,7 +509,7 @@ useEffect(() => {
                     Password
                   </th>
                   <th scope="col" className="px-4 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider sticky top-0 bg-gray-50 z-10">
-                    Purpose
+                    Name
                   </th>
                   <th scope="col" className="px-4 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider sticky top-0 bg-gray-50 z-10">
                     Status
@@ -558,7 +530,7 @@ useEffect(() => {
                       {account.password ? '••••••••••••' : 'Missing'}
                     </td>
                     <td className="px-6 py-4 whitespace-normal break-words text-sm text-gray-500">
-                      {account.buildingPurpose || 'Missing'}
+                      {account.name || 'Missing'}
                     </td>
                     <td className="px-6 py-4 whitespace-normal break-words">
                       {validationErrors[index] ? (
