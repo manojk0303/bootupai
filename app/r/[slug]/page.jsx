@@ -2,7 +2,7 @@
 import { db } from '@/lib/db';
 import { notFound } from 'next/navigation';
 import PipedreamSignupForm from '@/components/PipedreamSignupForm';
-import AirtableSignupForm from '@components/AirtableSignupForm';
+import AirtableSignupForm from '@/components/AirtableSignupForm';
 export default async function ReferralPage({ params }) {
   let referralData;
   
