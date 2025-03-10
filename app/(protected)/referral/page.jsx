@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { Loader2, Trash2, ExternalLink, Link2, Copy, Check } from 'lucide-react';
 import credentials from '../../../config/credentials';
+import Link from "next/link";
 
 export default function ReferralLinks() {
   const [referrals, setReferrals] = useState({});
@@ -106,9 +107,11 @@ export default function ReferralLinks() {
               <p className="text-gray-600 mb-3 sm:mb-4 text-sm sm:text-base">
                 You don&apos;t have any referral links yet.
               </p>
+              <Link to="/dashboard/create-referral">
               <button className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition text-sm sm:text-base">
                 Create Your First Link
               </button>
+              </Link>
             </div>
           </div>
         ) : (
