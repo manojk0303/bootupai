@@ -14,7 +14,7 @@ export default function ProtectedLayout({
           <div className='flex flex-col min-h-screen'>
             <Navbar />
             <main className='flex-1 py-8 mt-10 '>
-              <div className='mx-auto w-full  max-w-4xl rounded-xl border bg-white p-4 sm:p-6 shadow-lg dark:bg-gray-800'>
+              <div className='mx-auto w-full  max-w-5xl  rounded-xl border bg-white p-4 sm:p-6 shadow-lg dark:bg-gray-800'>
                 {children}
               </div>
             </main>
