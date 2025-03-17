@@ -10,9 +10,9 @@ export function Footer() {
               <p className="text-sm text-gray-600">© {new Date().getFullYear()} Bootup AI. All rights reserved.</p>
             </div>
             <div className="flex gap-6">
-              <a href="/terms" className="text-sm text-gray-600 hover:text-blue-600">Terms</a>
-              <a href="/privacy" className="text-sm text-gray-600 hover:text-blue-600">Privacy</a>
-              <a href="/contact" className="text-sm text-gray-600 hover:text-blue-600">Contact</a>
+              <a href="/terms" className="text-sm text-gray-600 hover:text-blue-600">Terms &amp; Conditions</a>
+              <a href="/privacy" className="text-sm text-gray-600 hover:text-blue-600">Privacy Policy</a>
+              <a href="/refund-policy" className="text-sm text-gray-600 hover:text-blue-600">Refund Policy</a>
             </div>
           </div>
         </div>
