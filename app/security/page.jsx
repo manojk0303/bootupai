@@ -24,7 +24,7 @@ export default function SecurityPage() {
             </div>
             
             <p className="text-lg text-gray-700 mb-8 text-center">
-              Your privacy matters to us. At Bootup AI, we're committed to protecting your data and ensuring that our platform remains a secure, trusted solution for creating accounts with your referral code.
+              Your privacy matters to us. At Bootup AI, we&apos;re committed to protecting your data and ensuring that our platform remains a secure, trusted solution for creating accounts with your referral code.
             </p>
           </div>
         </section>
@@ -39,7 +39,7 @@ export default function SecurityPage() {
                   <ShieldCheck className="h-6 w-6 text-green-600" />
                 </div>
                 <h3 className="text-lg font-semibold mb-2">No Credential Storage</h3>
-                <p className="text-gray-600">We don't keep your audience's login credentials. All temporary data is discarded immediately after account creation.</p>
+                <p className="text-gray-600">We don&apos;t keep your audience&apos;s login credentials. All temporary data is discarded immediately after account creation.</p>
               </div>
               
               {/* Feature 2 */}
@@ -76,7 +76,7 @@ export default function SecurityPage() {
                   <ul className="space-y-2 text-gray-700">
                     <li className="flex items-start">
                       <span className="flex-shrink-0 text-green-600 mr-2">•</span>
-                      <span><strong>We don't keep your audience's login credentials.</strong> When Bootup AI creates an account on a supported platform (e.g., Pipedream, Airtable), the credentials are securely emailed directly to your audience member.</span>
+                      <span><strong>We don&apos;t keep your audience&apos;s login credentials.</strong> When Bootup AI creates an account on a supported platform (e.g., Pipedream, Airtable), the credentials are securely emailed directly to your audience member.</span>
                     </li>
                     <li className="flex items-start">
                       <span className="flex-shrink-0 text-green-600 mr-2">•</span>
@@ -91,11 +91,11 @@ export default function SecurityPage() {
                   <ul className="space-y-2 text-gray-700">
                     <li className="flex items-start">
                       <span className="flex-shrink-0 text-blue-600 mr-2">•</span>
-                      <span>All data moving between your browser and Bootup AI's servers is <strong>encrypted using industry-standard SSL/TLS protocols</strong>. This ensures that your information—like referral links or CSV uploads—stays safe from interception by malicious actors.</span>
+                      <span>All data moving between your browser and Bootup AI&apos;s servers is <strong>encrypted using industry-standard SSL/TLS protocols</strong>. This ensures that your information—like referral links or CSV uploads—stays safe from interception by malicious actors.</span>
                     </li>
                     <li className="flex items-start">
                       <span className="flex-shrink-0 text-blue-600 mr-2">•</span>
-                      <span>Whether you're managing your account or generating accounts in bulk, you can trust that your data remains private and secure during transmission.</span>
+                      <span>Whether you&apos;re managing your account or generating accounts in bulk, you can trust that your data remains private and secure during transmission.</span>
                     </li>
                   </ul>
                 </div>
@@ -106,7 +106,7 @@ export default function SecurityPage() {
                   <ul className="space-y-2 text-gray-700">
                     <li className="flex items-start">
                       <span className="flex-shrink-0 text-purple-600 mr-2">•</span>
-                      <span>Bootup AI adheres to the <strong>General Data Protection Regulation (GDPR)</strong>, a rigorous set of privacy laws from the European Union. This compliance ensures that your personal data is handled responsibly, no matter where you're located.</span>
+                      <span>Bootup AI adheres to the <strong>General Data Protection Regulation (GDPR)</strong>, a rigorous set of privacy laws from the European Union. This compliance ensures that your personal data is handled responsibly, no matter where you&apos;re located.</span>
                     </li>
                     <li className="flex items-start">
                       <span className="flex-shrink-0 text-purple-600 mr-2">•</span>
@@ -135,7 +135,7 @@ export default function SecurityPage() {
                   <ul className="space-y-2 text-gray-700">
                     <li className="flex items-start">
                       <span className="flex-shrink-0 text-green-600 mr-2">•</span>
-                      <span><strong>Privacy-First Design:</strong> Your audience's data is used solely to create accounts with your referral code—nothing more. We don't store it, share it, or use it for any other purpose.</span>
+                      <span><strong>Privacy-First Design:</strong> Your audience&apos;s data is used solely to create accounts with your referral code—nothing more. We don&apos;t store it, share it, or use it for any other purpose.</span>
                     </li>
                     <li className="flex items-start">
                       <span className="flex-shrink-0 text-green-600 mr-2">•</span>
@@ -154,11 +154,11 @@ export default function SecurityPage() {
                   <ul className="space-y-2 text-gray-700">
                     <li className="flex items-start">
                       <span className="flex-shrink-0 text-blue-600 mr-2">•</span>
-                      <span><strong>Transparency:</strong> We're open about how we handle your data. You're in control, and we're here to answer any questions you have.</span>
+                      <span><strong>Transparency:</strong> We&apos;re open about how we handle your data. You&apos;re in control, and we&apos;re here to answer any questions you have.</span>
                     </li>
                     <li className="flex items-start">
                       <span className="flex-shrink-0 text-blue-600 mr-2">•</span>
-                      <span><strong>No Data Sharing:</strong> Your information is never sold or shared beyond what's necessary to provide our services.</span>
+                      <span><strong>No Data Sharing:</strong> Your information is never sold or shared beyond what&apos;s necessary to provide our services.</span>
                     </li>
                     <li className="flex items-start">
                       <span className="flex-shrink-0 text-blue-600 mr-2">•</span>
@@ -178,7 +178,7 @@ export default function SecurityPage() {
               <div className="bg-white rounded-lg p-6 sm:p-8">
                 <h2 className="text-xl sm:text-2xl font-bold mb-4">Your Privacy, Our Priority</h2>
                 <p className="text-gray-700">
-                  Bootup AI is built with security and privacy at its core. By choosing us, you're partnering with a platform that keeps your data safe, so you can focus on growing your referrals with confidence.
+                  Bootup AI is built with security and privacy at its core. By choosing us, you&apos;re partnering with a platform that keeps your data safe, so you can focus on growing your referrals with confidence.
                 </p>
               </div>
             </div>

@@ -95,7 +95,7 @@ export default function HomePage() {
                   <ShieldCheck className="h-6 w-6 text-green-600" />
                 </div>
                 <h3 className="text-lg font-semibold mb-2">Secure & Transparent</h3>
-                <p className="text-gray-600">No credentials are stored, ensuring your audience's data remains safe and secure.</p>
+                <p className="text-gray-600">No credentials are stored, ensuring your audience&apos;s data remains safe and secure.</p>
               </div>
             </div>
             
@@ -206,7 +206,7 @@ export default function HomePage() {
                     <p className="text-sm text-gray-600">Course Creator</p>
                   </div>
                 </div>
-                <p className="text-gray-700 italic">"Bootup AI has increased my referral earnings by 300%. My students no longer forget to use my referral code when signing up for tools I recommend."</p>
+                <p className="text-gray-700 italic">&quot;Bootup AI has increased my referral earnings by 300%. My students no longer forget to use my referral code when signing up for tools I recommend.&quot;</p>
               </div>
               
               <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100">
@@ -219,7 +219,7 @@ export default function HomePage() {
                     <p className="text-sm text-gray-600">Tech Influencer</p>
                   </div>
                 </div>
-                <p className="text-gray-700 italic">"The bulk account creation feature saved me hours of work and ensured every member of my audience signed up with my referral code."</p>
+                <p className="text-gray-700 italic">&quot;The bulk account creation feature saved me hours of work and ensured every member of my audience signed up with my referral code.&quot;</p>
               </div>
               
               <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100">
@@ -232,7 +232,7 @@ export default function HomePage() {
                     <p className="text-sm text-gray-600">Software Educator</p>
                   </div>
                 </div>
-                <p className="text-gray-700 italic">"Bootup AI turned my Pipedream referrals into a significant income stream. The process is seamless for both me and my students."</p>
+                <p className="text-gray-700 italic">&quot;Bootup AI turned my Pipedream referrals into a significant income stream. The process is seamless for both me and my students.&quot;</p>
               </div>
             </div>
           </div>
@@ -249,7 +249,7 @@ export default function HomePage() {
                     <h3 className="text-xl font-semibold">Your Privacy Matters</h3>
                   </div>
                   <p className="text-gray-700">
-                    Bootup AI doesn't store any account credentials. Your audience's data is only used to create accounts with your referral code, ensuring maximum security and privacy.
+                    Bootup AI doesn&apos;t store any account credentials. Your audience&apos;s data is only used to create accounts with your referral code, ensuring maximum security and privacy.
                   </p>
                   <ul className="mt-4 space-y-2">
                     <li className="flex items-center gap-2">
@@ -284,7 +284,7 @@ export default function HomePage() {
             <div className="text-center mb-12">
               <h2 className="text-2xl sm:text-3xl font-bold mb-4">Frequently Asked Questions</h2>
               <p className="text-sm sm:text-base text-gray-600 max-w-xl mx-auto px-2">
-                Have questions? We've got answers.
+                Have questions? We&apos;ve got answers.
               </p>
             </div>
             

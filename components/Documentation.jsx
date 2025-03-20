@@ -26,7 +26,7 @@ const Documentation = () => {
           </div>
           <div className="bg-white rounded-xl shadow-md p-6 border border-gray-100 hover:shadow-lg transition-shadow">
             <h3 className="font-bold text-xl mb-3">Email Solutions</h3>
-            <p className="text-gray-600">Don't have user emails? We provide temporary email addresses for seamless onboarding.</p>
+            <p className="text-gray-600">Don&apos;t have user emails? We provide temporary email addresses for seamless onboarding.</p>
           </div>
         </div>
 
@@ -140,7 +140,7 @@ const Documentation = () => {
             </h2>
             <div className="bg-white rounded-xl shadow-md p-8 border border-gray-100">
               <p className="text-gray-600 mb-6">
-                Don't have access to your audience's emails? No problem! Bootup AI provides solutions for Web3 users with only Dmail access or situations where you know names but not emails.
+                Don&apos;t have access to your audience&apos;s emails? No problem! Bootup AI provides solutions for Web3 users with only Dmail access or situations where you know names but not emails.
               </p>
               <div className="space-y-4">
                 <div className="flex items-start gap-2">
@@ -213,7 +213,7 @@ const Documentation = () => {
                   </div>
                   <div>
                     <h3 className="font-bold text-xl mb-2">Credits Added</h3>
-                    <p className="text-gray-600">We'll update your account with purchased credits as soon as possible</p>
+                    <p className="text-gray-600">We&apos;ll update your account with purchased credits as soon as possible</p>
                   </div>
                 </div>
               </div>
