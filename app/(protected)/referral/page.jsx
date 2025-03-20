@@ -90,7 +90,7 @@ export default function ReferralLinks() {
   return (
     <div className="w-full mx-auto p-2 sm:p-4 max-w-6xl">
       <div className="bg-white shadow-lg rounded-lg overflow-hidden">
-        <div className="bg-gradient-to-r from-blue-500 to-indigo-600 p-4 sm:p-6">
+        <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-4 sm:p-6">
           <h2 className="text-xl sm:text-2xl font-bold flex items-center gap-2 text-white">
             <Link2 className="h-5 w-5 sm:h-6 sm:w-6" />
             Your Referral Links

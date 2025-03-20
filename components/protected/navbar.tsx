@@ -41,6 +41,10 @@ export function Navbar() {
     {
       href: '/bulk-creation',
       label: 'Bulk Creation'
+    },
+    {
+      href: '/payment-verify',
+      label: 'Verify Payment'
     }
   ];
 

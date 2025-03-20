@@ -90,7 +90,7 @@ export default function PipedreamSignupForm({ service, creator }) {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-green-50 py-12 px-4 sm:px-6 lg:px-8 flex justify-center items-center">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-green-50 py-12 px-4 sm:px-6 lg:px-8 flex justify-center items-center p-4">
       {/* Toast notification */}
       {showToast && (
         <div className="fixed top-4 right-4 z-50 max-w-sm animate-fade-in">
@@ -121,7 +121,7 @@ export default function PipedreamSignupForm({ service, creator }) {
         </div>
       )}
 
-      <div className="w-full max-w-lg bg-white py-8 px-6 shadow-xl sm:rounded-lg sm:px-10 relative overflow-hidden transition-all duration-300">
+      <div className="w-full max-w-lg bg-white py-8 px-6 shadow-xl sm:rounded-lg sm:px-10 relative overflow-hidden transition-all duration-300 p-5">
         {/* Decorative elements */}
         <div className="absolute -top-10 -right-10 w-40 h-40 bg-green-100 rounded-full opacity-50"></div>
         <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-green-100 rounded-full opacity-50"></div>

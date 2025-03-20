@@ -21,10 +21,10 @@ export default auth((req) => {
   const isAuthRoute = authRoutes.includes(nextUrl.pathname);
   // Add referral route check directly in middleware
   const isReferralRoute = nextUrl.pathname.startsWith('/r/');
-  const isAboutRoute = nextUrl.pathname.startsWith('/about') || nextUrl.pathname.startsWith('/pricing') || nextUrl.pathname.startsWith('/contact') || nextUrl.pathname.startsWith('/privacy') || nextUrl.pathname.startsWith('/terms') || nextUrl.pathname.startsWith('/documentation') || nextUrl.pathname.startsWith('/refund-policy');
-
+  const isPublic =  nextUrl.pathname.startsWith('/pricing') || nextUrl.pathname.startsWith('/contact') || nextUrl.pathname.startsWith('/privacy') || nextUrl.pathname.startsWith('/terms') || nextUrl.pathname.startsWith('/documentation') || nextUrl.pathname.startsWith('/refund-policy') || nextUrl.pathname.startsWith('/security');
+  const priceRoute = nextUrl.pathname.startsWith('/api/currency/exchange');
     // Handle API routes with API key verification
-    if (isApiRoute && !isApiAuthRoute) {
+    if (isApiRoute && !isApiAuthRoute && !priceRoute) {
       // Get API key from request header
       const apiKey = req.headers.get('x-api-key');
       
@@ -48,10 +48,12 @@ export default auth((req) => {
       return null;
     }
 
-  if (isApiAuthRoute || isAboutRoute) {
+  if (isApiAuthRoute || isPublic) {
     return null;
   }
-
+  if (priceRoute) {
+    return null; // Allow price routes to proceed without authentication
+  }
   if (isAuthRoute) {
     if (isSignedIn) {
       return Response.redirect(new URL(DEFAULT_SIGNIN_REDIRECT, nextUrl));
