@@ -31,11 +31,11 @@ export function CardWrapper({
         <AuthHeader label={headerLabel} />
       </CardHeader>
       <CardContent>{children}</CardContent>
-      {showSocial && (
+      {/* {showSocial && (
         <CardFooter>
           <Social />
         </CardFooter>
-      )}
+      )} */}
       <CardFooter className='justify-center'>
         <AuthFooter
           label={footerLabel}
