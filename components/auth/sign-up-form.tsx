@@ -21,6 +21,7 @@ import { Button } from '@/components/ui/button';
 import { FormError } from '@/components/form-error';
 import { FormSuccess } from '@/components/form-success';
 import { CardWrapper } from '@/components/auth/card-wrapper';
+import { useSearchParams } from 'next/navigation';
 
 export function SignUpForm() {
   const [isPending, startTransition] = useTransition();
@@ -35,14 +36,16 @@ export function SignUpForm() {
       confirm: '',
       name: ''
     }
-  });
+  });      const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get('callbackUrl');
 
   const onSubmit = (values: z.infer<typeof SignUpSchema>) => {
     setError('');
     setSuccess('');
 
+
     startTransition(() => {
-      signUp(values).then((data) => {
+      signUp(values,callbackUrl).then((data) => {
         setError(data.error);
         setSuccess(data.success);
       });

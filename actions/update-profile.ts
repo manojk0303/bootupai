@@ -5,7 +5,7 @@ import * as z from 'zod';
 import { db } from '@/lib/db';
 import { update } from '@/auth';
 import { UpdateProfileSchema } from '@/schemas';
-import { sendVerificationEmail } from '@/lib/mail';
+// import { sendVerificationEmail } from '@/lib/mail';
 import { currentUser } from '@/lib/authentication';
 import { generateVerificationToken } from '@/lib/tokens';
 import { getUserByEmail, getUserById } from '@/data/user';
@@ -40,11 +40,11 @@ export async function updateProfile(
 
     const verificationToken = await generateVerificationToken(dbUser.id, true);
 
-    await sendVerificationEmail(
-      values.name,
-      values.email,
-      verificationToken.token
-    );
+    // await sendVerificationEmail(
+    //   values.name,
+    //   values.email,
+    //   verificationToken.token
+    // );
   }
 
   const updatedUser = await db.user.update({

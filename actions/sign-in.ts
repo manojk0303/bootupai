@@ -3,15 +3,15 @@
 import * as z from 'zod';
 import { AuthError } from 'next-auth';
 
-import {
-  generateVerificationToken
-} from '@/lib/tokens';
+// import {
+//   generateVerificationToken
+// } from '@/lib/tokens';
 import { db } from '@/lib/db';
 import { SignInSchema } from '@/schemas';
 import { getUserByEmail } from '@/data/user';
 import { signIn as authSignIn } from '@/auth';
 import { DEFAULT_SIGNIN_REDIRECT } from '@/routes';
-import {  sendVerificationEmail } from '@/lib/mail';
+// import {  sendVerificationEmail } from '@/lib/mail';
 
 export async function signIn(
   values: z.infer<typeof SignInSchema>,
@@ -31,17 +31,17 @@ export async function signIn(
     return { error: 'Email does not exist.' };
   }
 
-  if (!existingUser.emailVerified) {
-    const verificationToken = await generateVerificationToken(existingUser.id);
+  // if (!existingUser.emailVerified) {
+  //   const verificationToken = await generateVerificationToken(existingUser.id);
 
-    await sendVerificationEmail(
-      existingUser.name,
-      existingUser.email,
-      verificationToken.token
-    );
+  //   // await sendVerificationEmail(
+  //   //   existingUser.name,
+  //   //   existingUser.email,
+  //   //   verificationToken.token
+  //   // );
 
-    return { success: 'Confirmation email sent.' };
-  }
+  //   return { success: 'Confirmation email sent.' };
+  // }
 
 
   try {
