@@ -55,10 +55,11 @@ export function SignInForm() {
             form.reset();
             setError(data.error);
           }
+          console.log("data :",data)
 
-          if (data?.success) {
+          if (data && !data.error) {
             form.reset();
-            setSuccess(data.success);
+            setSuccess("Successfully signed in!");
           }
 
         })

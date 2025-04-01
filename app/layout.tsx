@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { SessionProvider } from 'next-auth/react';
-
+import Script from 'next/script'
 import './globals.css';
 import { auth } from '@/auth';
 import { cn } from '@/lib/utils';
@@ -47,6 +47,14 @@ export default async function RootLayout({
   return (
     <SessionProvider session={session}>
       <html lang='en' suppressHydrationWarning>
+        <head>
+        <Script
+          defer
+          data-domain="bootupai.tech"
+          src="https://plausible.io/js/script.js"
+          strategy="afterInteractive"
+        />
+        </head>
         <body className={cn('relative', inter.className)}>
             <div className='w-full flex justify-end pt-4 pr-4'>
             </div>
